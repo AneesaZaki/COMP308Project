@@ -4,8 +4,8 @@
 const tf = require("@tensorflow/tfjs");
 //require('@tensorflow/tfjs-node');
 //load iris training and testing data
-const iris = require("../../iris.json");
-const irisTesting = require("../../iris-testing.json");
+// const iris = require("../../iris.json");
+// const irisTesting = require("../../iris-testing.json");
 const vitalsign = require("../../vitalsign.json");
 var lossValue;
 //
@@ -42,6 +42,7 @@ exports.trainAndPredictUserInput = function (req, res) {
   //
   //tensor of features for testing data
   const testingData = tf.tensor2d(
+
     vitalSignTestingUser.map((item) => [
       item.temperature,
       item.bloodPressure,
@@ -63,7 +64,7 @@ exports.trainAndPredictUserInput = function (req, res) {
   //add the hidden layer
   model.add(
     tf.layers.dense({
-      inputShape: [5], //dimension of hidden layer
+      inputShape: [20], //dimension of hidden layer
       activation: "sigmoid",
       units: 3, //dimension of final output (critical,followup,healthy)
     })
