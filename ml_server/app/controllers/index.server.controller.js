@@ -64,7 +64,7 @@ exports.trainAndPredictUserInput = function (req, res) {
   //add the hidden layer
   model.add(
     tf.layers.dense({
-      inputShape: [20], //dimension of hidden layer
+      inputShape: [5], //dimension of hidden layer
       activation: "sigmoid",
       units: 3, //dimension of final output (critical,followup,healthy)
     })
